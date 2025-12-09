@@ -6,6 +6,6 @@ export default defineConfig({
   base: '/crypto-dashboard/', 
   build: {
     outDir: 'dist',
-    sourcemap: false 
+    chunkSizeWarningLimit: 1000,
   }
 })

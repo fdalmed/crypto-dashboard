@@ -38,13 +38,11 @@ jobs:
     - name: Build
       run: npm run build
     
-    # Force enable GitHub Pages
+    # This will enable Pages automatically
     - name: Setup Pages
       uses: actions/configure-pages@v4
       with:
         enablement: true
-        # Optional: Set custom domain if you have one
-        # domain: crypto.yourdomain.com
     
     - name: Upload artifact
       uses: actions/upload-pages-artifact@v3
