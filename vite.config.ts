@@ -3,9 +3,8 @@ import react from '@vitejs/plugin-react'
 
 export default defineConfig({
   plugins: [react()],
-  base: '/crypto-dashboard/', 
+  base: '/crypto-dashboard/',  // This is CRITICAL for GitHub Pages
   build: {
-    outDir: 'dist',
-    chunkSizeWarningLimit: 1000,
+    outDir: 'dist'
   }
 })
