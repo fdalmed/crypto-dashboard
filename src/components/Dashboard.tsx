@@ -13,7 +13,7 @@ type Props = {
 };
 
 // Colors for charts
-const PIE_COLORS = ["#00A6FB", "#0582CA", "#006494", "#003554", "#051923"];
+//const PIE_COLORS = ["#00A6FB", "#0582CA", "#006494", "#003554", "#051923"];
 
 // ------------------------------
 // Simple AI Market Insight
@@ -57,16 +57,16 @@ export default function CryptoDashboard({ coins, loading }: Props) {
   const pieAnalysis = getPieAnalysis(top5);
 
   // Multi-line price comparison
-  const multiLineData =
-    top5[0]?.sparkline_in_7d?.price.map((_, i) => ({
-      day: i,
-      ...Object.fromEntries(
-        top5.map((coin) => [
-          coin.symbol.toUpperCase(),
-          coin.sparkline_in_7d?.price[i] ?? 0,
-        ])
-      ),
-    })) || [];
+//   const multiLineData =
+//     top5[0]?.sparkline_in_7d?.price.map((_, i) => ({
+//       day: i,
+//       ...Object.fromEntries(
+//         top5.map((coin) => [
+//           coin.symbol.toUpperCase(),
+//           coin.sparkline_in_7d?.price[i] ?? 0,
+//         ])
+//       ),
+//     })) || [];
 
   // Volume Bar Chart
   const volumeData = top5.map((coin) => ({

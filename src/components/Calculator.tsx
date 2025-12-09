@@ -178,11 +178,11 @@ export default function Calculator({ coins }: Props) {
     const sortedAnalysis = [...portfolioAnalysis].sort((a, b) => a.change - b.change);
 
     // Calculate total funds available (including additional budget)
-    const totalAvailable = totalBudget;
+    //const totalAvailable = totalBudget;
     
     // Smart reallocation strategy
     const recs: Recommendation[] = [];
-    let fundsToReallocate = 0;
+    //let fundsToReallocate = 0;
     let fundsFromPoorPerformers = 0;
 
     // Identify funds that should be reallocated from poor performers
@@ -202,7 +202,7 @@ export default function Calculator({ coins }: Props) {
     
     // Calculate allocation to top performers
     const topPerformerAllocation = totalReallocationPool * 0.6; // 60% to top performers
-    const userChoiceAllocation = totalReallocationPool * 0.4; // 40% back to user's good performers
+    //const userChoiceAllocation = totalReallocationPool * 0.4; // 40% back to user's good performers
 
     // Generate recommendations for user's current coins
     portfolioAnalysis.forEach(item => {

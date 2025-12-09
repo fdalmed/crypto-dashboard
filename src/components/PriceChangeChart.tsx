@@ -94,9 +94,9 @@ export default function SparklineTiles({ coins }: Props) {
     setCurrentSlide(prev => (prev >= maxSlide ? 0 : prev + 1));
   }, [autoScroll, maxSlide]);
 
-  const prevSlide = () => {
-    setCurrentSlide(prev => (prev === 0 ? maxSlide : prev - 1));
-  };
+//   const prevSlide = () => {
+//     setCurrentSlide(prev => (prev === 0 ? maxSlide : prev - 1));
+//   };
 
   useEffect(() => {
     if (!autoScroll) return;
