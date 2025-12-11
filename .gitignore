@@ -33,3 +33,6 @@ logs/
 # Coverage
 coverage/
 .nyc_output/
+
+
+*.info
