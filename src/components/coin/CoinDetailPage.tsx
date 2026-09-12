@@ -70,6 +70,9 @@ export default function CoinDetailPage({ coin, history }: Props) {
           <Link href="/markets" className="mt-4 inline-flex rounded-lg bg-blue-600 px-4 py-2 text-sm font-medium text-white hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-500">
             Explore all markets
           </Link>
+          <Link href="/compare" className="mt-3 inline-flex rounded-lg px-2 py-1 text-sm font-medium text-blue-700 hover:underline focus:outline-none focus:ring-2 focus:ring-blue-500 dark:text-blue-400">
+            Compare this asset
+          </Link>
         </article>
       </section>
     </div>

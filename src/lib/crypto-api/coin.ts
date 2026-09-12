@@ -1,5 +1,6 @@
 import "server-only";
 
+import { cache } from "react";
 import type { CoinDetail, HistoricalPricePoint } from "@/types/market";
 import { toCoinDetail, toHistoricalPricePoints } from "./adapters";
 import { cryptoApiFetch } from "./client";
@@ -10,10 +11,10 @@ function getCoinPath(id: string) {
   return `/coins/${encodeURIComponent(id)}?localization=false&tickers=false&market_data=true&community_data=false&developer_data=false&sparkline=false`;
 }
 
-export async function getCoinDetail(id: string): Promise<CoinDetail> {
+export const getCoinDetail = cache(async function getCoinDetail(id: string): Promise<CoinDetail> {
   const response = await cryptoApiFetch<CoinGeckoCoinDetail>(getCoinPath(id), REVALIDATE_SECONDS.coinDetail);
   return toCoinDetail(response);
-}
+});
 
 export async function getCoinPriceHistory(id: string): Promise<HistoricalPricePoint[]> {
   const path = `/coins/${encodeURIComponent(id)}/market_chart?vs_currency=usd&days=30&interval=daily`;
