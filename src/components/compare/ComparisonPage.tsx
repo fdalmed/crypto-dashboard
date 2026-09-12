@@ -94,7 +94,7 @@ function CoinIdentity({ coin }: { coin: CoinDetail }) {
   return (
     <article className="rounded-xl border border-gray-200 bg-white p-5 shadow-sm dark:border-gray-700 dark:bg-gray-800">
       <div className="flex items-center gap-3">
-        {coin.imageUrl ? <img src={coin.imageUrl} alt={`${coin.name} logo`} className="h-11 w-11" /> : <div className="h-11 w-11 rounded-full bg-gray-200 dark:bg-gray-700" aria-hidden="true" />}
+        {coin.imageUrl ? <img src={coin.imageUrl} alt={`${coin.name} logo`} width={44} height={44} referrerPolicy="no-referrer" className="h-11 w-11" /> : <div className="h-11 w-11 rounded-full bg-gray-200 dark:bg-gray-700" aria-hidden="true" />}
         <div>
           <h2 className="font-semibold">{coin.name}</h2>
           <p className="text-sm text-gray-600 dark:text-gray-300">{coin.symbol} {coin.marketCapRank === null ? "- Rank N/A" : `- Rank #${coin.marketCapRank}`}</p>

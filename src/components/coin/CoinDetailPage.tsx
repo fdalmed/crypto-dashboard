@@ -24,10 +24,10 @@ export default function CoinDetailPage({ coin, history }: Props) {
       <section className="rounded-xl border border-gray-200 bg-white p-5 shadow-sm dark:border-gray-700 dark:bg-gray-800">
         <div className="flex flex-wrap items-start justify-between gap-5">
           <div className="flex items-center gap-4">
-            {coin.imageUrl ? <img src={coin.imageUrl} alt={`${coin.name} logo`} className="h-14 w-14" /> : <div className="h-14 w-14 rounded-full bg-gray-200 dark:bg-gray-700" aria-hidden="true" />}
+            {coin.imageUrl ? <img src={coin.imageUrl} alt={`${coin.name} logo`} width={56} height={56} referrerPolicy="no-referrer" className="h-14 w-14" /> : <div className="h-14 w-14 rounded-full bg-gray-200 dark:bg-gray-700" aria-hidden="true" />}
             <div>
               <h1 className="text-3xl font-bold tracking-tight">{coin.name} price</h1>
-              <p className="mt-1 text-sm font-medium text-gray-600 dark:text-gray-300">{coin.symbol} {coin.marketCapRank === null ? "" : `· Rank #${coin.marketCapRank}`}</p>
+              <p className="mt-1 text-sm font-medium text-gray-600 dark:text-gray-300">{coin.symbol} {coin.marketCapRank === null ? "" : `- Rank #${coin.marketCapRank}`}</p>
             </div>
           </div>
           <div className="text-left sm:text-right">

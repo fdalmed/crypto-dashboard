@@ -6,7 +6,8 @@ export default function ThemeToggle() {
   useEffect(() => {
     const savedTheme = window.localStorage.getItem("darkMode");
     const prefersDark = window.matchMedia("(prefers-color-scheme: dark)").matches;
-    document.documentElement.classList.toggle("dark", savedTheme ? JSON.parse(savedTheme) : prefersDark);
+    const nextDarkMode = savedTheme === null ? prefersDark : savedTheme === "true";
+    document.documentElement.classList.toggle("dark", nextDarkMode);
   }, []);
 
   const toggleTheme = () => {
@@ -19,7 +20,7 @@ export default function ThemeToggle() {
     <button
       type="button"
       onClick={toggleTheme}
-      className="rounded-lg px-3 py-2 text-sm font-medium hover:bg-gray-100 dark:hover:bg-gray-800"
+      className="rounded-lg px-3 py-2 text-sm font-medium hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-blue-500 dark:hover:bg-gray-800"
       aria-label="Toggle dark mode"
     >
       Theme

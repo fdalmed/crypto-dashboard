@@ -52,7 +52,7 @@ export default function MarketTable({
     <section>
       {searchable && (
         <div className="mb-4 flex flex-wrap items-center justify-between gap-3">
-          <p className="text-sm text-gray-600 dark:text-gray-300">{results.length} matching assets</p>
+          <p className="text-sm text-gray-600 dark:text-gray-300" aria-live="polite">{results.length} matching assets</p>
           <label className="w-full sm:w-80">
             <span className="sr-only">Search markets by coin name or symbol</span>
             <input
@@ -81,7 +81,7 @@ export default function MarketTable({
                       aria-label={`Sort by ${column.label}${isActive ? `, currently ${sortDirection === "asc" ? "ascending" : "descending"}` : ""}`}
                     >
                       {column.label}
-                      <span aria-hidden="true">{isActive ? (sortDirection === "asc" ? "↑" : "↓") : "↕"}</span>
+                      <span aria-hidden="true" className="text-xs">{isActive ? (sortDirection === "asc" ? "ASC" : "DESC") : "SORT"}</span>
                     </button>
                   </th>
                 );
@@ -95,7 +95,7 @@ export default function MarketTable({
                     aria-label="Sort by provider trend position"
                   >
                     Trend position
-                    <span aria-hidden="true">{sortKey === "trendingScore" ? (sortDirection === "asc" ? "↑" : "↓") : "↕"}</span>
+                    <span aria-hidden="true" className="text-xs">{sortKey === "trendingScore" ? (sortDirection === "asc" ? "ASC" : "DESC") : "SORT"}</span>
                   </button>
                 </th>
               )}
@@ -107,7 +107,7 @@ export default function MarketTable({
                 <td className="px-4 py-3 text-right text-gray-600 dark:text-gray-300">{coin.marketCapRank ?? "N/A"}</td>
                 <td className="px-4 py-3">
                   <div className="flex items-center gap-3">
-                    {coin.imageUrl ? <img src={coin.imageUrl} alt="" className="h-7 w-7" /> : <div className="h-7 w-7 rounded-full bg-gray-200 dark:bg-gray-700" aria-hidden="true" />}
+                    {coin.imageUrl ? <img src={coin.imageUrl} alt="" width={28} height={28} loading="lazy" referrerPolicy="no-referrer" className="h-7 w-7" /> : <div className="h-7 w-7 rounded-full bg-gray-200 dark:bg-gray-700" aria-hidden="true" />}
                     <div>
                       <Link href={`/coin/${coin.id}`} className="rounded font-medium hover:text-blue-600 focus:outline-none focus:ring-2 focus:ring-blue-500 dark:hover:text-blue-400">
                         {coin.name}
@@ -118,7 +118,7 @@ export default function MarketTable({
                 </td>
                 <td className="px-4 py-3 text-right font-medium">{coin.currentPrice === null ? "N/A" : formatCurrency(coin.currentPrice)}</td>
                 <td className="px-4 py-3 text-right">
-                  <span className={`font-medium ${(coin.priceChangePercentage24h ?? 0) >= 0 ? "text-green-700 dark:text-green-400" : "text-red-700 dark:text-red-400"}`}>
+                  <span className={`font-medium ${coin.priceChangePercentage24h === null ? "" : coin.priceChangePercentage24h >= 0 ? "text-green-700 dark:text-green-400" : "text-red-700 dark:text-red-400"}`}>
                     {formatPercent(coin.priceChangePercentage24h)}
                   </span>
                 </td>

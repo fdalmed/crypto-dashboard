@@ -24,7 +24,7 @@ export default function MarketShareChart({ coins, global }: Props) {
       <p className="mt-1 text-sm text-gray-500 dark:text-gray-400">
         Top five tracked assets compared with the provider&apos;s global market cap.
       </p>
-      <div className="h-72">
+      <div className="h-72" role="img" aria-label="Global market-cap distribution chart for the top five tracked assets and other assets">
         <ResponsivePie
           data={data}
           margin={{ top: 20, right: 20, bottom: 20, left: 20 }}

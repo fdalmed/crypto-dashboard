@@ -73,7 +73,7 @@ export default function Dashboard({ coins, global, updatedAt }: MarketOverview) 
           {coins.slice(0, 5).map((coin) => (
             <Link key={coin.id} href={`/coin/${coin.id}`} className="rounded-xl border border-gray-200 bg-white p-4 shadow-sm transition-shadow hover:shadow-md focus:outline-none focus:ring-2 focus:ring-blue-500 dark:border-gray-700 dark:bg-gray-800">
               <div className="flex items-center gap-3">
-                <img src={coin.imageUrl} alt="" className="h-8 w-8" />
+                <img src={coin.imageUrl} alt="" width={32} height={32} loading="lazy" referrerPolicy="no-referrer" className="h-8 w-8" />
                 <div className="min-w-0">
                   <p className="font-semibold">{coin.symbol}</p>
                   <p className="truncate text-xs text-gray-500 dark:text-gray-400">{coin.name}</p>
