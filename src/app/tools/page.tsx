@@ -3,8 +3,9 @@ import ToolCard from "@/components/tools/ToolCard";
 import ToolPageHeader from "@/components/tools/ToolPageHeader";
 
 export const metadata: Metadata = {
-  title: "Crypto Tools & Calculators | Crypto Market Dashboard",
+  title: "Crypto Tools & Calculators",
   description: "Useful cryptocurrency conversion, profit, DCA, and market cap calculators.",
+  alternates: { canonical: "/tools" },
 };
 
 const tools = [

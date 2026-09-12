@@ -1,6 +1,6 @@
 import { describe, expect, it } from "vitest";
 
-import { getAbsoluteDifference, getComparisonSummary, getHigherToLowerRatio, parseComparisonPair } from "./comparisons";
+import { getAbsoluteDifference, getCanonicalComparisonPath, getComparisonSummary, getHigherToLowerRatio, parseComparisonPair } from "./comparisons";
 import type { CoinDetail } from "@/types/market";
 
 const bitcoin: CoinDetail = {
@@ -16,6 +16,10 @@ const ethereum: CoinDetail = { ...bitcoin, id: "ethereum", name: "Ethereum", sym
 describe("parseComparisonPair", () => {
   it("parses two valid, distinct coin ids", () => {
     expect(parseComparisonPair("bitcoin-vs-ethereum")).toEqual({ firstId: "bitcoin", secondId: "ethereum" });
+  });
+
+  it("uses alphabetical IDs for a stable comparison URL", () => {
+    expect(getCanonicalComparisonPath({ firstId: "ethereum", secondId: "bitcoin" })).toBe("/compare/bitcoin-vs-ethereum");
   });
 
   it.each(["bitcoin", "bitcoin-vs-bitcoin", "bitcoin-vs-ethereum-vs-solana", "Bitcoin-vs-ethereum", "bitcoin-vs-"])("rejects malformed pair %s", (pair) => {

@@ -7,8 +7,9 @@ import { getMarketCoins } from "@/lib/crypto-api/market";
 export const dynamic = "force-dynamic";
 
 export const metadata: Metadata = {
-  title: "Top Crypto Losers | Crypto Market Dashboard",
+  title: "Top Crypto Losers",
   description: "Tracked cryptocurrencies with the largest negative price movements over the last 24 hours.",
+  alternates: { canonical: "/markets/losers" },
 };
 
 export default async function LosersPage() {

@@ -17,12 +17,13 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   try {
     const coin = await getCoinDetail(id);
     return {
-      title: `${coin.name} Price, Market Cap & Chart | Crypto Market Dashboard`,
+      title: `${coin.name} Price, Market Cap & Chart`,
       description: `Current ${coin.name} market information, including USD price, market cap, volume, and a historical price chart.`,
+      alternates: { canonical: `/coin/${coin.id}` },
     };
   } catch {
     return {
-      title: "Cryptocurrency Market Data | Crypto Market Dashboard",
+      title: "Cryptocurrency Market Data",
       description: "Current cryptocurrency market information and historical price data.",
     };
   }

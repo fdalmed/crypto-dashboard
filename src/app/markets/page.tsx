@@ -6,8 +6,9 @@ import { getMarketOverview } from "@/lib/crypto-api/market";
 export const dynamic = "force-dynamic";
 
 export const metadata: Metadata = {
-  title: "Cryptocurrency Markets | Crypto Market Dashboard",
+  title: "Cryptocurrency Markets",
   description: "Browse the largest cryptocurrencies by market capitalization in USD.",
+  alternates: { canonical: "/markets" },
 };
 
 export default async function MarketsPage() {

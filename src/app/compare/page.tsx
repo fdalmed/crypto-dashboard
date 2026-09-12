@@ -6,8 +6,9 @@ import DataUnavailable from "@/components/ui/DataUnavailable";
 import { getMarketCoins } from "@/lib/crypto-api/market";
 
 export const metadata: Metadata = {
-  title: "Compare Cryptocurrencies | Crypto Market Dashboard",
+  title: "Compare Cryptocurrencies",
   description: "Compare cryptocurrency price, market cap, volume, supply, and historical market statistics side by side.",
+  alternates: { canonical: "/compare" },
 };
 
 const popularComparisons = [

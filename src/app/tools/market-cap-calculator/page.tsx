@@ -4,8 +4,9 @@ import { MarketCapCalculator } from "@/components/tools/MarketCapCalculator";
 import { ToolPageHeader } from "@/components/tools/ToolPageHeader";
 
 export const metadata: Metadata = {
-  title: "Crypto Market Cap Calculator | Crypto Market Dashboard",
+  title: "Crypto Market Cap Calculator",
   description: "Calculate an estimated crypto market cap from price and supply, or estimate price from a target market cap.",
+  alternates: { canonical: "/tools/market-cap-calculator" },
 };
 
 export default function MarketCapCalculatorPage() {
