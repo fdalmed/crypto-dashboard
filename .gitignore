@@ -15,6 +15,8 @@ yarn-error.log*
 dist/
 build/
 out/
+.next/
+*.tsbuildinfo
 
 # IDE files
 .vscode/
