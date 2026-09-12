@@ -4,8 +4,9 @@ import { ProfitCalculator } from "@/components/tools/ProfitCalculator";
 import { ToolPageHeader } from "@/components/tools/ToolPageHeader";
 
 export const metadata: Metadata = {
-  title: "Crypto Profit Calculator | Crypto Market Dashboard",
+  title: "Crypto Profit Calculator",
   description: "Estimate crypto trade profit, loss, fees, final value, and return on investment.",
+  alternates: { canonical: "/tools/profit-calculator" },
 };
 
 export default function ProfitCalculatorPage() {

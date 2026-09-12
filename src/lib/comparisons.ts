@@ -23,6 +23,11 @@ export function parseComparisonPair(pair: string): ComparisonPair | null {
   return { firstId, secondId };
 }
 
+export function getCanonicalComparisonPath(pair: ComparisonPair) {
+  const [firstId, secondId] = [pair.firstId, pair.secondId].sort();
+  return `/compare/${firstId}-vs-${secondId}`;
+}
+
 export function getAbsoluteDifference(first: number | null, second: number | null): number | null {
   if (!isValidNonNegativeNumber(first) || !isValidNonNegativeNumber(second)) {
     return null;

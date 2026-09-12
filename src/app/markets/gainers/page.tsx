@@ -7,8 +7,9 @@ import { getMarketCoins } from "@/lib/crypto-api/market";
 export const dynamic = "force-dynamic";
 
 export const metadata: Metadata = {
-  title: "Top Crypto Gainers | Crypto Market Dashboard",
+  title: "Top Crypto Gainers",
   description: "Top-performing tracked cryptocurrencies over the last 24 hours.",
+  alternates: { canonical: "/markets/gainers" },
 };
 
 export default async function GainersPage() {

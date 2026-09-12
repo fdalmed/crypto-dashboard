@@ -1,6 +1,13 @@
 import Dashboard from "@/components/market/Dashboard";
 import DataUnavailable from "@/components/ui/DataUnavailable";
 import { getMarketOverview } from "@/lib/crypto-api/market";
+import type { Metadata } from "next";
+
+export const metadata: Metadata = {
+  title: "Crypto Market Overview",
+  description: "A global USD overview of cryptocurrency prices, market capitalization, market breadth, and recent movers.",
+  alternates: { canonical: "/" },
+};
 
 export const dynamic = "force-dynamic";
 

@@ -5,8 +5,9 @@ import DataUnavailable from "@/components/ui/DataUnavailable";
 import { getFiatPerUsdRates, getMarketCoins } from "@/lib/crypto-api/market";
 
 export const metadata: Metadata = {
-  title: "Crypto Converter | Crypto Market Dashboard",
+  title: "Crypto Converter",
   description: "Convert a cryptocurrency amount to supported fiat currencies using recent market data.",
+  alternates: { canonical: "/tools/converter" },
 };
 
 export const dynamic = "force-dynamic";

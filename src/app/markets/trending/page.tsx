@@ -6,8 +6,9 @@ import { getTrendingMarketCoins } from "@/lib/crypto-api/market";
 export const dynamic = "force-dynamic";
 
 export const metadata: Metadata = {
-  title: "Trending Cryptocurrencies | Crypto Market Dashboard",
+  title: "Trending Cryptocurrencies",
   description: "Cryptocurrencies currently listed by the market-data provider as trending.",
+  alternates: { canonical: "/markets/trending" },
 };
 
 export default async function TrendingPage() {

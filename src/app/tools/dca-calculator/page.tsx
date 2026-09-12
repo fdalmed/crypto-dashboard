@@ -4,8 +4,9 @@ import { DcaCalculator } from "@/components/tools/DcaCalculator";
 import { ToolPageHeader } from "@/components/tools/ToolPageHeader";
 
 export const metadata: Metadata = {
-  title: "Crypto DCA Calculator | Crypto Market Dashboard",
+  title: "Crypto DCA Calculator",
   description: "Model dollar-cost averaging contributions, accumulated crypto, current value, and ROI.",
+  alternates: { canonical: "/tools/dca-calculator" },
 };
 
 export default function DcaCalculatorPage() {

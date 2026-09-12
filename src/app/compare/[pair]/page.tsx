@@ -1,9 +1,9 @@
 import type { Metadata } from "next";
-import { notFound } from "next/navigation";
+import { notFound, redirect } from "next/navigation";
 
 import ComparisonPage from "@/components/compare/ComparisonPage";
 import DataUnavailable from "@/components/ui/DataUnavailable";
-import { parseComparisonPair } from "@/lib/comparisons";
+import { getCanonicalComparisonPath, parseComparisonPair } from "@/lib/comparisons";
 import { getCoinDetail } from "@/lib/crypto-api/coin";
 import { CryptoApiNotFoundError } from "@/lib/crypto-api/client";
 
@@ -14,14 +14,18 @@ type Props = {
 export const dynamic = "force-dynamic";
 
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
-  const parsedPair = parseComparisonPair((await params).pair);
+  const pair = (await params).pair;
+  const parsedPair = parseComparisonPair(pair);
   if (!parsedPair) return comparisonFallbackMetadata;
+  const canonicalPath = getCanonicalComparisonPath(parsedPair);
+  if (canonicalPath !== `/compare/${pair}`) return { ...comparisonFallbackMetadata, alternates: { canonical: canonicalPath } };
 
   try {
     const [first, second] = await Promise.all([getCoinDetail(parsedPair.firstId), getCoinDetail(parsedPair.secondId)]);
     return {
-      title: `${first.name} vs ${second.name}: Price, Market Cap & Stats Comparison | Crypto Market Dashboard`,
+      title: `${first.name} vs ${second.name}: Price, Market Cap & Stats Comparison`,
       description: `Compare ${first.name} and ${second.name} price, market cap, volume, supply, historical extremes, and other current market statistics.`,
+      alternates: { canonical: canonicalPath },
     };
   } catch {
     return comparisonFallbackMetadata;
@@ -29,8 +33,11 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
 }
 
 export default async function ComparePairPage({ params }: Props) {
-  const parsedPair = parseComparisonPair((await params).pair);
+  const pair = (await params).pair;
+  const parsedPair = parseComparisonPair(pair);
   if (!parsedPair) notFound();
+  const canonicalPath = getCanonicalComparisonPath(parsedPair);
+  if (canonicalPath !== `/compare/${pair}`) redirect(canonicalPath);
 
   let coins = null;
   try {
@@ -44,6 +51,6 @@ export default async function ComparePairPage({ params }: Props) {
 }
 
 const comparisonFallbackMetadata: Metadata = {
-  title: "Cryptocurrency Comparison | Crypto Market Dashboard",
+  title: "Cryptocurrency Comparison",
   description: "Compare cryptocurrency prices, market caps, volumes, supply, and other market statistics.",
 };
