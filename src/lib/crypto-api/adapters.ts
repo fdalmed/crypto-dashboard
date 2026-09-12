@@ -1,5 +1,6 @@
-import type { CoinDetail, GlobalMarket, HistoricalPricePoint, MarketCoin, TrendingMarketCoin } from "@/types/market";
-import type { CoinGeckoCoinDetail, CoinGeckoGlobalResponse, CoinGeckoMarketChartResponse, CoinGeckoMarketCoin, CoinGeckoTrendingResponse } from "./provider-types";
+import { CURRENCIES } from "@/lib/currencies";
+import type { CoinDetail, FiatPerUsdRates, GlobalMarket, HistoricalPricePoint, MarketCoin, TrendingMarketCoin } from "@/types/market";
+import type { CoinGeckoCoinDetail, CoinGeckoExchangeRatesResponse, CoinGeckoGlobalResponse, CoinGeckoMarketChartResponse, CoinGeckoMarketCoin, CoinGeckoTrendingResponse } from "./provider-types";
 
 export function toMarketCoin(coin: CoinGeckoMarketCoin): MarketCoin {
   return {
@@ -45,6 +46,16 @@ export function toGlobalMarket(response: CoinGeckoGlobalResponse): GlobalMarket 
     marketCapChangePercentage24h: response.data.market_cap_change_percentage_24h_usd,
     bitcoinDominance: response.data.market_cap_percentage.btc ?? null,
   };
+}
+
+export function toFiatPerUsdRates(response: CoinGeckoExchangeRatesResponse): FiatPerUsdRates {
+  const usdPerBitcoin = response.rates.usd?.value;
+
+  return Object.keys(CURRENCIES).reduce((rates, currency) => {
+    const fiatPerBitcoin = response.rates[currency.toLowerCase()]?.value;
+    rates[currency as keyof FiatPerUsdRates] = usdPerBitcoin && fiatPerBitcoin ? fiatPerBitcoin / usdPerBitcoin : null;
+    return rates;
+  }, {} as FiatPerUsdRates);
 }
 
 function getUsdValue(values: Record<string, number | null | undefined> | null | undefined) {

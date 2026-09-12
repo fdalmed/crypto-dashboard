@@ -26,6 +26,8 @@ export type MarketCoin = {
   priceChangePercentage24h: number | null;
 };
 
+export type FiatPerUsdRates = Record<CurrencyCode, number | null>;
+
 export type TrendingMarketCoin = MarketCoin & {
   trendingScore: number;
 };

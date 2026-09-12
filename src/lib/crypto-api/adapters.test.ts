@@ -1,5 +1,5 @@
 import { describe, expect, it } from "vitest";
-import { toCoinDetail, toGlobalMarket, toHistoricalPricePoints, toMarketCoin, toTrendingMarketCoin } from "./adapters";
+import { toCoinDetail, toFiatPerUsdRates, toGlobalMarket, toHistoricalPricePoints, toMarketCoin, toTrendingMarketCoin } from "./adapters";
 
 describe("CoinGecko adapters", () => {
   it("maps provider fields into the internal market model", () => {
@@ -96,5 +96,9 @@ describe("CoinGecko adapters", () => {
     expect(toHistoricalPricePoints({ prices: [[1, 10], [Number.NaN, 12], [3, Number.NaN]] })).toEqual([
       { timestamp: 1, price: 10 },
     ]);
+  });
+
+  it("derives fiat-per-USD rates from the provider exchange-rate response", () => {
+    expect(toFiatPerUsdRates({ rates: { usd: { value: 100 }, eur: { value: 90 }, aed: { value: 367 } } })).toMatchObject({ USD: 1, EUR: 0.9, AED: 3.67, GBP: null });
   });
 });

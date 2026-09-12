@@ -6,6 +6,7 @@ export const REVALIDATE_SECONDS = {
   trending: 300,
   coinDetail: 600,
   priceHistory: 900,
+  exchangeRates: 900,
 } as const;
 
 export const MARKET_PAGE_SIZE = 100;

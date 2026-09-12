@@ -66,3 +66,7 @@ export type CoinGeckoCoinDetail = {
 export type CoinGeckoMarketChartResponse = {
   prices: Array<[number, number]>;
 };
+
+export type CoinGeckoExchangeRatesResponse = {
+  rates: Record<string, { value?: number }>;
+};
