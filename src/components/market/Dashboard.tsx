@@ -1,6 +1,7 @@
 "use client";
 
 import dynamic from "next/dynamic";
+import Link from "next/link";
 import { formatCompactCurrency, formatCurrency, formatDateTime, formatPercent } from "@/lib/formatters";
 import type { MarketOverview } from "@/types/market";
 
@@ -70,7 +71,7 @@ export default function Dashboard({ coins, global, updatedAt }: MarketOverview) 
         </div>
         <div className="grid gap-3 sm:grid-cols-2 lg:grid-cols-5">
           {coins.slice(0, 5).map((coin) => (
-            <article key={coin.id} className="rounded-xl border border-gray-200 bg-white p-4 shadow-sm dark:border-gray-700 dark:bg-gray-800">
+            <Link key={coin.id} href={`/coin/${coin.id}`} className="rounded-xl border border-gray-200 bg-white p-4 shadow-sm transition-shadow hover:shadow-md focus:outline-none focus:ring-2 focus:ring-blue-500 dark:border-gray-700 dark:bg-gray-800">
               <div className="flex items-center gap-3">
                 <img src={coin.imageUrl} alt="" className="h-8 w-8" />
                 <div className="min-w-0">
@@ -82,7 +83,7 @@ export default function Dashboard({ coins, global, updatedAt }: MarketOverview) 
               <p className={`mt-1 text-sm font-medium ${(coin.priceChangePercentage24h ?? 0) >= 0 ? "text-green-600" : "text-red-600"}`}>
                 {formatPercent(coin.priceChangePercentage24h)}
               </p>
-            </article>
+            </Link>
           ))}
         </div>
       </section>
@@ -93,7 +94,7 @@ export default function Dashboard({ coins, global, updatedAt }: MarketOverview) 
       </section>
 
       <section className="grid gap-6 lg:grid-cols-2">
-        <MarketSignal title="Market breadth" value={`${gainers} gainers and ${losers} decliners`} description="Based on the 20 largest assets returned by the current market listing." />
+        <MarketSignal title="Market breadth" value={`${gainers} gainers and ${losers} decliners`} description="Based on the 100 largest assets returned by the current market listing." />
         <MarketSignal title="Average tracked change" value={formatPercent(averageChange)} description="A descriptive market signal, not investment advice." />
       </section>
     </div>

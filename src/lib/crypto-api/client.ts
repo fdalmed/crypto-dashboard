@@ -9,6 +9,13 @@ export class CryptoApiError extends Error {
   }
 }
 
+export class CryptoApiNotFoundError extends CryptoApiError {
+  constructor() {
+    super();
+    this.name = "CryptoApiNotFoundError";
+  }
+}
+
 export async function cryptoApiFetch<T>(path: string, revalidate: number): Promise<T> {
   try {
     const response = await fetch(`${CRYPTO_API_BASE_URL}${path}`, {
@@ -17,9 +24,11 @@ export async function cryptoApiFetch<T>(path: string, revalidate: number): Promi
       headers: { Accept: "application/json" },
     });
 
+    if (response.status === 404) throw new CryptoApiNotFoundError();
     if (!response.ok) throw new CryptoApiError();
     return (await response.json()) as T;
-  } catch {
+  } catch (error) {
+    if (error instanceof CryptoApiError) throw error;
     throw new CryptoApiError();
   }
 }

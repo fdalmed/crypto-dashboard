@@ -1,6 +1,7 @@
 "use client";
 
 import { useMemo, useState } from "react";
+import Link from "next/link";
 import { formatCompactCurrency, formatCurrency, formatPercent } from "@/lib/formatters";
 import { filterMarketCoins, sortMarketCoins, type MarketSortKey, type SortDirection } from "@/lib/market-list";
 import { isTrendingMarketCoin, type MarketCoin } from "@/types/market";
@@ -108,7 +109,9 @@ export default function MarketTable({
                   <div className="flex items-center gap-3">
                     {coin.imageUrl ? <img src={coin.imageUrl} alt="" className="h-7 w-7" /> : <div className="h-7 w-7 rounded-full bg-gray-200 dark:bg-gray-700" aria-hidden="true" />}
                     <div>
-                      <p className="font-medium">{coin.name}</p>
+                      <Link href={`/coin/${coin.id}`} className="rounded font-medium hover:text-blue-600 focus:outline-none focus:ring-2 focus:ring-blue-500 dark:hover:text-blue-400">
+                        {coin.name}
+                      </Link>
                       <p className="text-xs text-gray-500">{coin.symbol}</p>
                     </div>
                   </div>

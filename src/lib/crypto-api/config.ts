@@ -4,6 +4,8 @@ export const REVALIDATE_SECONDS = {
   markets: 90,
   global: 90,
   trending: 300,
+  coinDetail: 600,
+  priceHistory: 900,
 } as const;
 
 export const MARKET_PAGE_SIZE = 100;
