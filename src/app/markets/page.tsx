@@ -1,10 +1,12 @@
 import type { Metadata } from "next";
-import MarketTable from "@/components/market/MarketTable";
+import MarketPage from "@/components/market/MarketPage";
 import DataUnavailable from "@/components/ui/DataUnavailable";
 import { getMarketOverview } from "@/lib/crypto-api/market";
 
+export const dynamic = "force-dynamic";
+
 export const metadata: Metadata = {
-  title: "Crypto Markets | Crypto Market Dashboard",
+  title: "Cryptocurrency Markets | Crypto Market Dashboard",
   description: "Browse the largest cryptocurrencies by market capitalization in USD.",
 };
 
@@ -17,5 +19,12 @@ export default async function MarketsPage() {
     coins = null;
   }
 
-  return coins ? <MarketTable coins={coins} /> : <DataUnavailable />;
+  return coins ? (
+    <MarketPage
+      eyebrow="USD market listing"
+      title="Cryptocurrency markets"
+      description="Browse and sort the 100 largest tracked cryptocurrencies by market capitalization."
+      coins={coins}
+    />
+  ) : <DataUnavailable />;
 }

@@ -17,14 +17,22 @@ export type MarketCoin = {
   symbol: string;
   name: string;
   imageUrl: string;
-  currentPrice: number;
-  marketCap: number;
+  currentPrice: number | null;
+  marketCap: number | null;
   marketCapRank: number | null;
   totalVolume: number | null;
   high24h: number | null;
   low24h: number | null;
   priceChangePercentage24h: number | null;
 };
+
+export type TrendingMarketCoin = MarketCoin & {
+  trendingScore: number;
+};
+
+export function isTrendingMarketCoin(coin: MarketCoin): coin is TrendingMarketCoin {
+  return "trendingScore" in coin && typeof (coin as TrendingMarketCoin).trendingScore === "number";
+}
 
 export type GlobalMarket = {
   totalMarketCap: number;

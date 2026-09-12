@@ -78,7 +78,7 @@ export default function Dashboard({ coins, global, updatedAt }: MarketOverview) 
                   <p className="truncate text-xs text-gray-500 dark:text-gray-400">{coin.name}</p>
                 </div>
               </div>
-              <p className="mt-4 font-semibold">{formatCurrency(coin.currentPrice)}</p>
+              <p className="mt-4 font-semibold">{coin.currentPrice === null ? "N/A" : formatCurrency(coin.currentPrice)}</p>
               <p className={`mt-1 text-sm font-medium ${(coin.priceChangePercentage24h ?? 0) >= 0 ? "text-green-600" : "text-red-600"}`}>
                 {formatPercent(coin.priceChangePercentage24h)}
               </p>

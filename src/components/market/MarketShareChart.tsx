@@ -10,11 +10,11 @@ type Props = {
 };
 
 export default function MarketShareChart({ coins, global }: Props) {
-  const topCoins = coins.slice(0, 5);
-  const topMarketCap = topCoins.reduce((total, coin) => total + coin.marketCap, 0);
+  const topCoins = coins.filter((coin) => coin.marketCap !== null).slice(0, 5);
+  const topMarketCap = topCoins.reduce((total, coin) => total + (coin.marketCap ?? 0), 0);
   const otherMarketCap = Math.max(global.totalMarketCap - topMarketCap, 0);
   const data = [
-    ...topCoins.map((coin) => ({ id: coin.symbol, label: coin.symbol, value: coin.marketCap })),
+    ...topCoins.map((coin) => ({ id: coin.symbol, label: coin.symbol, value: coin.marketCap ?? 0 })),
     { id: "Other assets", label: "Other assets", value: otherMarketCap },
   ];
 
