@@ -24,7 +24,7 @@ export default function PriceMoversChart({ coins }: Props) {
     <section className="rounded-xl border border-gray-200 bg-white p-5 shadow-sm dark:border-gray-700 dark:bg-gray-800">
       <h2 className="font-semibold">Largest 24h movers</h2>
       <p className="mt-1 text-sm text-gray-500 dark:text-gray-400">Top tracked assets by absolute 24-hour price movement.</p>
-      <div className="h-72">
+      <div className="h-72" role="img" aria-label="Bar chart of the largest tracked 24-hour price movers">
         <ResponsiveBar
           data={data}
           keys={["change"]}
