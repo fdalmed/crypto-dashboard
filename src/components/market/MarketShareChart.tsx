@@ -1,6 +1,7 @@
 "use client";
 
 import { ResponsivePie } from "@nivo/pie";
+import { useNivoTheme } from "@/components/charts/useNivoTheme";
 import { formatCompactCurrency } from "@/lib/formatters";
 import type { GlobalMarket, MarketCoin } from "@/types/market";
 
@@ -10,6 +11,7 @@ type Props = {
 };
 
 export default function MarketShareChart({ coins, global }: Props) {
+  const nivoTheme = useNivoTheme();
   const topCoins = coins.filter((coin) => coin.marketCap !== null).slice(0, 5);
   const topMarketCap = topCoins.reduce((total, coin) => total + (coin.marketCap ?? 0), 0);
   const otherMarketCap = Math.max(global.totalMarketCap - topMarketCap, 0);
@@ -32,10 +34,11 @@ export default function MarketShareChart({ coins, global }: Props) {
           padAngle={1}
           cornerRadius={3}
           colors={["#2563eb", "#10b981", "#8b5cf6", "#f59e0b", "#ef4444", "#6b7280"]}
+          theme={nivoTheme}
           enableArcLabels={false}
           arcLinkLabelsSkipAngle={8}
           tooltip={({ datum }) => (
-            <div className="rounded-md border border-gray-200 bg-white px-3 py-2 text-sm shadow dark:border-gray-700 dark:bg-gray-800">
+            <div className="rounded-md border border-gray-200 bg-white px-3 py-2 text-sm text-gray-900 shadow dark:border-gray-700 dark:bg-gray-800 dark:text-gray-100">
               <strong>{datum.id}</strong>
               <div>{formatCompactCurrency(datum.value)}</div>
             </div>

@@ -1,10 +1,12 @@
 "use client";
 
 import { ResponsiveLine } from "@nivo/line";
+import { useNivoTheme } from "@/components/charts/useNivoTheme";
 import { formatCurrency } from "@/lib/formatters";
 import type { HistoricalPricePoint } from "@/types/market";
 
 export default function CoinPriceChart({ points }: { points: HistoricalPricePoint[] }) {
+  const nivoTheme = useNivoTheme();
   const data = [{
     id: "USD price",
     data: points.map((point) => ({ x: point.timestamp, y: point.price })),
@@ -33,15 +35,12 @@ export default function CoinPriceChart({ points }: { points: HistoricalPricePoin
           format: (value) => formatCurrency(Number(value)),
         }}
         tooltip={({ point }) => (
-          <div className="rounded-md border border-gray-200 bg-white px-3 py-2 text-sm shadow dark:border-gray-700 dark:bg-gray-800">
+          <div className="rounded-md border border-gray-200 bg-white px-3 py-2 text-sm text-gray-900 shadow dark:border-gray-700 dark:bg-gray-800 dark:text-gray-100">
             <strong>{new Intl.DateTimeFormat("en-US", { dateStyle: "medium" }).format(new Date(Number(point.data.x)))}</strong>
             <div>{formatCurrency(Number(point.data.y))}</div>
           </div>
         )}
-        theme={{
-          axis: { ticks: { text: { fill: "#6b7280", fontSize: 11 } } },
-          grid: { line: { stroke: "#e5e7eb" } },
-        }}
+        theme={nivoTheme}
       />
     </div>
   );

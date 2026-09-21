@@ -32,15 +32,4 @@ input {
     @apply bg-gray-800 text-gray-100;
   }
 
-  .nivo-chart svg text {
-    fill: #4b5563;
-  }
-
-  .dark .nivo-chart svg text {
-    fill: #cbd5e1;
-  }
-
-  .dark .nivo-chart svg line {
-    stroke: #374151;
-  }
 }

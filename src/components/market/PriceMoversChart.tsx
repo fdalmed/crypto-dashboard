@@ -1,12 +1,14 @@
 "use client";
 
 import { ResponsiveBar } from "@nivo/bar";
+import { useNivoTheme } from "@/components/charts/useNivoTheme";
 import { formatPercent } from "@/lib/formatters";
 import type { MarketCoin } from "@/types/market";
 
 type Props = { coins: MarketCoin[] };
 
 export default function PriceMoversChart({ coins }: Props) {
+  const nivoTheme = useNivoTheme();
   const data = [...coins]
     .filter((coin) => !["USDT", "USDC", "DAI"].includes(coin.symbol))
     .filter((coin) => coin.priceChangePercentage24h !== null)
@@ -33,11 +35,12 @@ export default function PriceMoversChart({ coins }: Props) {
           margin={{ top: 20, right: 30, bottom: 40, left: 48 }}
           padding={0.35}
           enableLabel={false}
+          theme={nivoTheme}
           colors={({ data: item }) => (Number(item.change) >= 0 ? "#10b981" : "#ef4444")}
           axisBottom={{ format: (value) => `${value}%` }}
           axisLeft={{ tickSize: 0, tickPadding: 8 }}
           tooltip={({ data: item }) => (
-            <div className="rounded-md border border-gray-200 bg-white px-3 py-2 text-sm shadow dark:border-gray-700 dark:bg-gray-800">
+            <div className="rounded-md border border-gray-200 bg-white px-3 py-2 text-sm text-gray-900 shadow dark:border-gray-700 dark:bg-gray-800 dark:text-gray-100">
               <strong>{String(item.symbol)}</strong>
               <div>{formatPercent(Number(item.change))}</div>
             </div>
