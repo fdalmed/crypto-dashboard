@@ -60,7 +60,7 @@ export default function MarketTable({
               value={query}
               onChange={(event) => setQuery(event.target.value)}
               placeholder="Search coin name or symbol"
-              className="w-full rounded-lg border border-gray-300 bg-white px-4 py-2.5 text-sm outline-none ring-blue-500 focus:ring-2 dark:border-gray-600 dark:bg-gray-800"
+              className="form-control px-4 text-sm"
             />
           </label>
         </div>

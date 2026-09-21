@@ -43,7 +43,7 @@ function CoinSelect({ id, label, value, onChange, coins }: { id: string; label: 
   return (
     <label htmlFor={id} className="block">
       <span className="text-sm font-medium">{label}</span>
-      <select id={id} value={value} onChange={(event) => onChange(event.target.value)} className="mt-2 w-full rounded-lg border border-gray-300 bg-white px-3 py-2.5 outline-none ring-blue-500 focus:ring-2 dark:border-gray-600 dark:bg-gray-800">
+      <select id={id} value={value} onChange={(event) => onChange(event.target.value)} className="form-control mt-2">
         {coins.map((coin) => <option key={coin.id} value={coin.id}>{coin.name} ({coin.symbol})</option>)}
       </select>
     </label>

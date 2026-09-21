@@ -2,7 +2,14 @@
 @tailwind components;
 @tailwind utilities;
 
-/* Optional: custom global styles */
+html {
+  color-scheme: light;
+}
+
+html.dark {
+  color-scheme: dark;
+}
+
 body {
   @apply bg-gray-100 dark:bg-gray-900 text-gray-900 dark:text-white;
 }
@@ -10,4 +17,30 @@ body {
 button,
 input {
   font: inherit;
+}
+
+@layer components {
+  .form-control {
+    @apply w-full rounded-lg border border-gray-300 bg-white px-3 py-2.5 text-gray-900 outline-none ring-blue-500 placeholder:text-gray-500 focus:ring-2 disabled:cursor-not-allowed disabled:opacity-60 dark:border-gray-600 dark:bg-gray-800 dark:text-gray-100 dark:placeholder:text-gray-400;
+  }
+
+  .form-control option {
+    @apply bg-white text-gray-900;
+  }
+
+  .dark .form-control option {
+    @apply bg-gray-800 text-gray-100;
+  }
+
+  .nivo-chart svg text {
+    fill: #4b5563;
+  }
+
+  .dark .nivo-chart svg text {
+    fill: #cbd5e1;
+  }
+
+  .dark .nivo-chart svg line {
+    stroke: #374151;
+  }
 }

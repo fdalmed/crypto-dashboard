@@ -52,25 +52,25 @@ export default function Converter({ coins, fiatRates, loadedAt }: Props) {
         <div className="grid gap-4 sm:grid-cols-2">
           <label className="block sm:col-span-2">
             <span className="text-sm font-medium">Find cryptocurrency</span>
-            <input value={query} onChange={(event) => setQuery(event.target.value)} placeholder="Search by name or symbol" className="mt-2 w-full rounded-lg border border-gray-300 bg-white px-3 py-2.5 outline-none ring-blue-500 focus:ring-2 dark:border-gray-600 dark:bg-gray-800" />
+            <input value={query} onChange={(event) => setQuery(event.target.value)} placeholder="Search by name or symbol" className="form-control mt-2" />
           </label>
           <label className="block">
             <span className="text-sm font-medium">Cryptocurrency</span>
-            <select value={coinId} onChange={(event) => setCoinId(event.target.value)} className="mt-2 w-full rounded-lg border border-gray-300 bg-white px-3 py-2.5 outline-none ring-blue-500 focus:ring-2 dark:border-gray-600 dark:bg-gray-800">
+            <select value={coinId} onChange={(event) => setCoinId(event.target.value)} className="form-control mt-2">
               {filteredCoins.map((item) => <option key={item.id} value={item.id}>{item.name} ({item.symbol})</option>)}
             </select>
           </label>
           <label className="block">
             <span className="text-sm font-medium">Fiat currency</span>
-            <select value={currency} onChange={(event) => setCurrency(event.target.value as CurrencyCode)} className="mt-2 w-full rounded-lg border border-gray-300 bg-white px-3 py-2.5 outline-none ring-blue-500 focus:ring-2 dark:border-gray-600 dark:bg-gray-800">
+            <select value={currency} onChange={(event) => setCurrency(event.target.value as CurrencyCode)} className="form-control mt-2">
               {Object.entries(CURRENCIES).map(([code, details]) => <option key={code} value={code}>{code} - {details.label}</option>)}
             </select>
           </label>
           <div className="sm:col-span-2" role="group" aria-label="Conversion direction">
             <p className="text-sm font-medium">Conversion direction</p>
             <div className="mt-2 flex flex-wrap gap-2">
-              <button type="button" onClick={() => setDirection("cryptoToFiat")} className={`rounded-lg px-3 py-2 text-sm font-medium focus:outline-none focus:ring-2 focus:ring-blue-500 ${direction === "cryptoToFiat" ? "bg-blue-600 text-white" : "bg-gray-100 dark:bg-gray-700"}`}>Crypto to fiat</button>
-              <button type="button" onClick={() => setDirection("fiatToCrypto")} className={`rounded-lg px-3 py-2 text-sm font-medium focus:outline-none focus:ring-2 focus:ring-blue-500 ${direction === "fiatToCrypto" ? "bg-blue-600 text-white" : "bg-gray-100 dark:bg-gray-700"}`}>Fiat to crypto</button>
+              <button type="button" onClick={() => setDirection("cryptoToFiat")} className={`rounded-lg px-3 py-2 text-sm font-medium focus:outline-none focus:ring-2 focus:ring-blue-500 ${direction === "cryptoToFiat" ? "bg-blue-600 text-white" : "bg-gray-100 text-gray-900 dark:bg-gray-700 dark:text-gray-100"}`}>Crypto to fiat</button>
+              <button type="button" onClick={() => setDirection("fiatToCrypto")} className={`rounded-lg px-3 py-2 text-sm font-medium focus:outline-none focus:ring-2 focus:ring-blue-500 ${direction === "fiatToCrypto" ? "bg-blue-600 text-white" : "bg-gray-100 text-gray-900 dark:bg-gray-700 dark:text-gray-100"}`}>Fiat to crypto</button>
             </div>
           </div>
           <div className="sm:col-span-2"><NumberInput id="converter-amount" label={direction === "cryptoToFiat" ? `${coin?.symbol ?? "Crypto"} amount` : `${currency} amount`} value={amount} onChange={setAmount} hint="Enter a non-negative amount." /></div>

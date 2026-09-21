@@ -11,7 +11,7 @@ export default function CoinPriceChart({ points }: { points: HistoricalPricePoin
   }];
 
   return (
-    <div className="h-80" role="img" aria-label="30-day historical USD price chart">
+    <div className="nivo-chart h-80" role="img" aria-label="30-day historical USD price chart">
       <ResponsiveLine
         data={data}
         margin={{ top: 20, right: 24, bottom: 48, left: 70 }}
