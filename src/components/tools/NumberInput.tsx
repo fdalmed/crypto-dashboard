@@ -22,7 +22,7 @@ export function NumberInput({ id, label, value, onChange, hint, step = "any", pr
           step={step}
           value={value}
           onChange={(event) => onChange(event.target.value)}
-          className={`w-full rounded-lg border border-gray-300 bg-white px-3 py-2.5 outline-none ring-blue-500 focus:ring-2 dark:border-gray-600 dark:bg-gray-800 ${prefix ? "pl-7" : ""}`}
+          className={`form-control ${prefix ? "pl-7" : ""}`}
         />
       </div>
     </label>
