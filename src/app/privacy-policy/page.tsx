@@ -4,7 +4,7 @@ import PublicPage from "@/components/layout/PublicPage";
 
 export const metadata: Metadata = {
   title: "Privacy Policy",
-  description: "Privacy information for the current Crypto Market Dashboard website implementation.",
+  description: "Privacy information for the current AssetZeno website implementation.",
   alternates: { canonical: "/privacy-policy" },
 };
 

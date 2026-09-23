@@ -19,7 +19,7 @@ export default function Footer() {
     <footer className="mt-12 border-t border-gray-200 bg-white dark:border-gray-700 dark:bg-gray-900">
       <div className="container mx-auto grid gap-8 px-4 py-8 text-sm md:grid-cols-[1.5fr_1fr_1fr] md:px-6">
         <div>
-          <p className="font-semibold">Crypto Market Dashboard</p>
+          <p className="font-semibold">AssetZeno</p>
           <p className="mt-2 max-w-sm leading-6 text-gray-600 dark:text-gray-300">Market information, comparison tools, and educational calculators for cryptocurrency research.</p>
         </div>
         <nav aria-label="Product links">

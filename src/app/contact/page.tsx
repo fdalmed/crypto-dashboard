@@ -4,7 +4,7 @@ import PublicPage from "@/components/layout/PublicPage";
 
 export const metadata: Metadata = {
   title: "Contact",
-  description: "Contact information and future support details for Crypto Market Dashboard.",
+  description: "Contact information and future support details for AssetZeno.",
   alternates: { canonical: "/contact" },
 };
 

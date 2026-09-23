@@ -7,23 +7,24 @@ import { siteUrl } from "@/lib/site-url";
 
 export const metadata: Metadata = {
   metadataBase: siteUrl,
+  applicationName: "AssetZeno",
   title: {
-    default: "Crypto Market Dashboard",
-    template: "%s | Crypto Market Dashboard",
+    default: "AssetZeno - Crypto Markets, Tools & Insights",
+    template: "%s | AssetZeno",
   },
-  description: "A global USD crypto market overview with live market data.",
+  description: "Explore cryptocurrency markets, coin data, comparisons, converters, and educational calculators with AssetZeno.",
   alternates: { canonical: "/" },
   openGraph: {
     type: "website",
     locale: "en_US",
-    siteName: "Crypto Market Dashboard",
-    title: "Crypto Market Dashboard",
-    description: "A global USD crypto market overview with live market data.",
+    siteName: "AssetZeno",
+    title: "AssetZeno - Crypto Markets, Tools & Insights",
+    description: "Explore cryptocurrency markets, coin data, comparisons, converters, and educational calculators with AssetZeno.",
   },
   twitter: {
     card: "summary",
-    title: "Crypto Market Dashboard",
-    description: "A global USD crypto market overview with live market data.",
+    title: "AssetZeno - Crypto Markets, Tools & Insights",
+    description: "Explore cryptocurrency markets, coin data, comparisons, converters, and educational calculators with AssetZeno.",
   },
 };
 

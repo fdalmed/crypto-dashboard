@@ -4,7 +4,7 @@ import PublicPage from "@/components/layout/PublicPage";
 
 export const metadata: Metadata = {
   title: "Terms of Use",
-  description: "Draft terms of use for the informational Crypto Market Dashboard website.",
+  description: "Draft terms of use for the informational AssetZeno website.",
   alternates: { canonical: "/terms" },
 };
 

@@ -4,7 +4,7 @@ import { getMarketOverview } from "@/lib/crypto-api/market";
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
-  title: "Crypto Market Overview",
+  title: "AssetZeno - Crypto Markets, Tools & Insights",
   description: "A global USD overview of cryptocurrency prices, market capitalization, market breadth, and recent movers.",
   alternates: { canonical: "/" },
 };

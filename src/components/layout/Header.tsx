@@ -18,7 +18,7 @@ export default function Header() {
     <header className="sticky top-0 z-50 border-b border-gray-200 bg-white/90 backdrop-blur dark:border-gray-700 dark:bg-gray-900/90">
       <div className="container mx-auto flex min-h-16 flex-col justify-center gap-2 px-4 py-2 sm:flex-row sm:items-center sm:justify-between sm:gap-4 sm:py-0 md:px-6">
         <Link href="/" className="rounded text-base font-bold tracking-tight focus:outline-none focus:ring-2 focus:ring-blue-500 md:text-xl">
-          Crypto Market Dashboard
+          AssetZeno
         </Link>
         <nav aria-label="Primary navigation" className="flex w-full flex-wrap items-center justify-center gap-1 sm:w-auto sm:flex-nowrap sm:justify-start">
           {links.map((link) => {
